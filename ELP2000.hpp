@@ -22,9 +22,12 @@
 #define ELP2000_h
 
 #if ARDUINO
-#define CONST const PROGMEM
+    #ifndef PROGMEM
+        #include <pgmspace.h>
+    #endif
+    #define CONST const PROGMEM
 #else
-#define CONST const
+    #define CONST const
 #endif
 
 struct ELP2000Coefficient
